@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>chapter 全剖图</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .download-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #45a049;
+        }
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>chapter 全剖图</h1>
+
+        <div class="download-section">
+            <a href="chapter全剖图_fixed.mp4" download class="download-btn">
+                📥 下载视频文件
+            </a>
+        </div>
+
+        <video controls>
+            <source src="chapter全剖图_fixed.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
+
+        <div class="info">
+            <p><strong>视频文件:</strong> chapter全剖图_fixed.mp4</p>
+            <div class="file-info">
+                <span>点击上方按钮下载视频</span>
+                <span>或右键视频选择"另存为"</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加文件大小显示（如果可用）
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            const downloadBtn = document.querySelector('.download-btn');
+
+            // 尝试获取文件大小
+            fetch('chapter全剖图_fixed.mp4')
+                .then(response => {
+                    if (response.ok) {
+                        const size = response.headers.get('content-length');
+                        if (size) {
+                            const sizeMB = (size / (1024 * 1024)).toFixed(1);
+                            const fileInfo = document.querySelector('.file-info');
+                            fileInfo.innerHTML = `<span>文件大小: ${sizeMB} MB</span><span>点击上方按钮下载视频</span>`;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.log('无法获取文件大小信息');
+                });
+
+            // 视频加载完成后的处理
+            video.addEventListener('loadedmetadata', function() {
+                console.log('视频时长:', video.duration, '秒');
+            });
+
+            // 下载按钮点击事件
+            downloadBtn.addEventListener('click', function(e) {
+                console.log('开始下载视频:', 'chapter全剖图_fixed.mp4');
+            });
+        });
+    </script>
+</body>
+</html>
